@@ -27,16 +27,47 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  const url = new URL(event.request.url);
+  const request = event.request;
 
-  if (
-    event.request.method !== "GET" ||
-    url.origin !== self.location.origin
-  ) {
+  if (request.method !== "GET") {
+    return;
+  }
+
+  if (request.destination === "image") {
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open("guia-imagenes-v1");
+
+        try {
+          const response = await fetch(request);
+
+          if (response.ok || response.type === "opaque") {
+            await cache.put(request, response.clone());
+          }
+
+          return response;
+        } catch (error) {
+          const imagenGuardada = await cache.match(request);
+
+          if (imagenGuardada) {
+            return imagenGuardada;
+          }
+
+          throw error;
+        }
+      })()
+    );
+
+    return;
+  }
+
+  const url = new URL(request.url);
+
+  if (url.origin !== self.location.origin) {
     return;
   }
 
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(request).catch(() => caches.match(request))
   );
 });
