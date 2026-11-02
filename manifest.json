@@ -1,0 +1,26 @@
+
+{
+  "name": "Guía Comercial Castelli",
+  "short_name": "Guía Castelli",
+  "description": "Guía de comercios, servicios e información de Castelli, Chaco.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#075c46",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "./icon-192(1).png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
