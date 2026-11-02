@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base target="_top">
+    <title>Guía Comercial Castelli | Comercios y Servicios</title>
+  <meta name="description" content="Encontrá comercios, servicios y publicidad destacada de Juan José Castelli, Chaco, en la Guía Comercial Castelli.">
+  <link rel="canonical" href="https://ebillordo-sketch.github.io/guia-comercial-castelli/">
+  <meta property="og:title" content="Guía Comercial Castelli">
+<meta property="og:description" content="Encontrá comercios, servicios y publicidad destacada de Juan José Castelli, Chaco.">
+<meta property="og:url" content="https://ebillordo-sketch.github.io/guia-comercial-castelli/">
+  <meta property="og:image" content="https://ebillordo-sketch.github.io/guia-comercial-castelli/icon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#075c46">
+  
+<link rel="manifest" href="./manifest.json">
+
+  <style>
+    :root {
+      --green: #075c46;
+      --green2: #087b5b;
+      --bg: #f4f7f5;
+      --text: #202a26;
+      --muted: #6d7973;
+      --line: #e5ebe7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(145deg, #064b3b, #0c8060);
+      color: white;
+      padding: 27px 20px 30px;
+      border-radius: 0 0 26px 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #ffffffa8;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+    }
+
+    h1 { font-size: 23px; margin: 0 0 5px; }
+    .subtitle { margin: 0; color: #d8eee5; font-size: 14px; }
+
+    main {
+      max-width: 760px;
+      margin: auto;
+      padding: 18px 15px 35px;
+    }
+
+    .searchbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 0 14px;
+      box-shadow: 0 5px 18px #123c2910;
+    }
+
+    .searchbox span { font-size: 21px; }
+
+    input {
+      border: 0;
+      outline: 0;
+      width: 100%;
+      min-width: 0;
+      padding: 17px 0;
+      font-size: 15px;
+      background: transparent;
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 23px 0 12px;
+    }
+
+    h2 { font-size: 19px; margin: 0; }
+
+    .count { font-size: 12px; color: var(--muted); }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      max-height: 100px;
+      overflow: hidden;
+    }
+
+    .categories.expanded { max-height: none; }
+
+    .category {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 11px;
+      padding: 8px 4px;
+      color: #46564d;
+      font-size: 12px;
+      cursor: pointer;
+      overflow-wrap: anywhere;
+    }
+
+    .category.active {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .more-button {
+      display: block;
+      margin: 10px auto 0;
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-weight: bold;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    .section-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 15px;
+      margin: 12px 0;
+      box-shadow: 0 4px 15px #1a392408;
+      overflow-wrap: anywhere;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .5px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .section-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .section-card p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #58665e;
+      margin: 6px 0;
+    }
+
+    .ad-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 11px;
+      margin-bottom: 10px;
+    }
+
+    .section-link {
+      display: inline-block;
+      background: var(--green2);
+      color: white;
+      text-decoration: none;
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-top: 9px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 17px;
+      margin: 12px 0;
+      box-shadow: 0 4px 15px #1a392408;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e5f4ed;
+      color: var(--green);
+      padding: 5px 9px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 9px;
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
+
+    .description {
+      margin: 0 0 12px;
+      color: #58665e;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .detail {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 7px 0;
+    }
+
+    .contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green2);
+      color: white;
+      text-decoration: none;
+      padding: 12px 15px;
+      border-radius: 11px;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px 16px;
+      background: white;
+      border-radius: 16px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (min-width: 600px) {
+      header { padding-top: 35px; padding-bottom: 38px; }
+      h1 { font-size: 28px; }
+      main { padding-top: 24px; }
+
+      .categories {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .card { margin: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">📍</div>
+      <div>
+        <h1>Guía Comercial Castelli</h1>
+        <p class="subtitle">Todo lo que buscás, en un solo lugar.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="searchbox">
+      <span>⌕</span>
+      <input id="search" type="search"
+        placeholder="¿Qué negocio o servicio buscás?"
+        oninput="render()">
+    </div>
+
+    <div class="intro">
+      <h2>Explorá por categoría</h2>
+    </div>
+
+    <div id="categories" class="categories"></div>
+    <button id="moreCategories" class="more-button"
+      type="button" onclick="toggleCategories()" hidden>
+      Más categorías ▼
+    </button>
+
+    <div id="advertising"></div>
+    <div id="info1"></div>
+    <div id="info2"></div>
+    <div id="pharmacy"></div>
+    <div id="usefulPhones"></div>
+
+    <div class="intro">
+      <h2>Comercios de la ciudad</h2>
+      <span id="count" class="count"></span>
+    </div>
+
+    <div id="results">
+      <div class="empty">Cargando comercios...</div>
+    </div>
+  </main>
+
+  <footer>
+    <strong>Guía Comercial Castelli</strong>
+    <p>Apoyemos los comercios de nuestra ciudad.</p>
+  </footer>
+
+  <script>
+    let businesses = [];
+    let configuration = [];
+    let selected = "Principal";
+    let categoriesExpanded = false;
+
+    const icons = {
+      "Todos": "▦",
+      "Comida": "🍔",
+      "Belleza": "✂️",
+      "Indumentaria": "👕",
+      "Servicios": "🛠️",
+      "Hogar": "🏠",
+      "Automotor": "🚗",
+      "Tiendas": "🛍️"
+    };
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[c]);
+    }
+
+    function safeUrl(value) {
+      const url = String(value || "").trim();
+
+      if (/^https?:\/\/[^\s]+$/i.test(url)) {
+        return url;
+      }
+
+      return "";
+    }
+
+
+async function init() {
+  try {
+    const urlComercios = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMEgBi8DHOL6ULrg3ukoV-SJlCgT-QlZAtHhY47aySQ-cTVRlyGfaV5ISrNuKPq2FsfMlufUz6pyeT/pub?gid=0&single=true&output=csv";
+
+    const urlConfiguracion = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMEgBi8DHOL6ULrg3ukoV-SJlCgT-QlZAtHhY47aySQ-cTVRlyGfaV5ISrNuKPq2FsfMlufUz6pyeT/pub?gid=1844502957&single=true&output=csv";
+
+    const [respuestaComercios, respuestaConfig] = await Promise.all([
+      fetch(urlComercios),
+      fetch(urlConfiguracion)
+    ]);
+
+    if (!respuestaComercios.ok || !respuestaConfig.ok) {
+      throw new Error("No se pudieron cargar los datos publicados");
+    }
+
+    const [csvComercios, csvConfig] = await Promise.all([
+      respuestaComercios.text(),
+      respuestaConfig.text()
+    ]);
+
+    const convertirCSV = (csv) => {
+      const filas = [];
+      let fila = [];
+      let campo = "";
+      let entreComillas = false;
+
+      for (let i = 0; i < csv.length; i++) {
+        const c = csv[i];
+
+        if (c === '"') {
+          if (entreComillas && csv[i + 1] === '"') {
+            campo += '"';
+            i++;
+          } else {
+            entreComillas = !entreComillas;
+          }
+        } else if (c === "," && !entreComillas) {
+          fila.push(campo);
+          campo = "";
+        } else if ((c === "\n" || c === "\r") && !entreComillas) {
+          if (c === "\r" && csv[i + 1] === "\n") i++;
+          fila.push(campo);
+          if (fila.some(v => v.trim() !== "")) filas.push(fila);
+          fila = [];
+          campo = "";
+        } else {
+          campo += c;
+        }
+      }
+
+      fila.push(campo);
+      if (fila.some(v => v.trim() !== "")) filas.push(fila);
+
+      if (!filas.length) return [];
+
+      
+const encabezados = filas.shift().map(v =>
+  v.replace(/^\uFEFF/, "")
+   .trim()
+   .toLowerCase()
+   .normalize("NFD")
+   .replace(/[\u0300-\u036f]/g, "")
+);
+
+      return filas.map(valores => {
+        const objeto = {};
+        encabezados.forEach((nombre, i) => {
+          objeto[nombre] = (valores[i] || "").trim();
+        });
+        return objeto;
+      });
+    };
+
+    const datosComercios = convertirCSV(csvComercios);
+    const datosConfig = convertirCSV(csvConfig);
+
+    businesses = datosComercios.map(item => ({
+      nombre: item.nombre || "",
+      categoria: item.categoria || "",
+      descripcion: item.descripcion || "",
+      telefono: item.telefono || "",
+      direccion: item.direccion || "",
+      foto: item.foto || "",
+      destacado: ["si", "sí"].includes(
+        String(item.destacado || "").trim().toLowerCase()
+      )
+    }));
+
+    
+configuration = datosConfig.map(item => ({
+  tipo: item.tipo || "",
+  titulo: item.titulo || "",
+  descripcion: item.descripcion || "",
+  telefono: item.telefono || "",
+  imagen: item.imagen || "",
+  enlace: item.enlace || "",
+  "video youtube": item["video youtube"] || "",
+  activo: String(item.activo || "").trim().toLowerCase()
+}));
+    localStorage.setItem("guia_comercios", JSON.stringify(businesses));
+localStorage.setItem("guia_configuracion", JSON.stringify(configuration));
+    
+
+    drawCategories();
+    render();
+    drawSections();
+
+  } catch (error) {
+    document.getElementById("results").innerHTML =
+      '<div class="empty">No pudimos cargar los datos. Intentá nuevamente más tarde.</div>';
+    document.getElementById("count").textContent = "0 comercios";
+        console.error(error);
+
+    const comerciosGuardados = localStorage.getItem("guia_comercios");
+    const configuracionGuardada = localStorage.getItem("guia_configuracion");
+
+    if (comerciosGuardados && configuracionGuardada) {
+      businesses = JSON.parse(comerciosGuardados);
+      configuration = JSON.parse(configuracionGuardada);
+
+      drawCategories();
+      render();
+      drawSections();
+
+      document.getElementById("count").textContent += " (datos guardados)";
+    } else {
+      document.getElementById("results").innerHTML =
+        '<div class="empty">No pudimos cargar los datos. Intentá nuevamente más tarde.</div>';
+      document.getElementById("count").textContent = "0 comercios";
+    }
+  }
+}
+  
+
+    function drawCategories() {
+      const categoryNames = [
+        ...new Set(
+          businesses
+            .map(b => String(b.categoria || "").trim())
+            .filter(Boolean)
+        )
+      ];
+
+      const categories = ["Principal", "Todos", ...categoryNames];
+
+      if (!categories.includes(selected)) {
+  selected = "Principal";
+}
+
+      const container = document.getElementById("categories");
+
+      container.innerHTML = categories.map(c => `
+        <button class="category ${c === selected ? "active" : ""}"
+          type="button"
+          data-category="${escapeHtml(c)}"
+          onclick="choose(this.dataset.category)">
+          ${icons[c] || "•"} ${escapeHtml(c)}
+        </button>
+      `).join("");
+
+      container.classList.toggle("expanded", categoriesExpanded);
+
+      const moreButton = document.getElementById("moreCategories");
+      moreButton.hidden = categories.length <= 6;
+      moreButton.textContent = categoriesExpanded
+        ? "Ver menos ▲"
+        : "Más categorías ▼";
+    }
+
+    function toggleCategories() {
+      categoriesExpanded = !categoriesExpanded;
+      drawCategories();
+    }
+
+    
+function choose(category) {
+  selected = category;
+
+  const principal = selected === "Principal";
+
+  document.getElementById("advertising").style.display = principal ? "" : "none";
+  document.getElementById("info1").style.display = principal ? "" : "none";
+  document.getElementById("info2").style.display = principal ? "" : "none";
+  document.getElementById("pharmacy").style.display = principal ? "" : "none";
+  document.getElementById("usefulPhones").style.display = principal ? "" : "none";
+
+  document.getElementById("search").value = "";
+
+  drawCategories();
+  render();
+}
+
+
+    function drawSections() {
+      const estaActivo = item =>
+  String(item.activo || "").trim().toLowerCase() === "si" ||
+  String(item.activo || "").trim().toLowerCase() === "sí";
+
+const ads = configuration.filter(item => item.tipo === "publicidad" && estaActivo(item));
+const pharmacies = configuration.filter(item => item.tipo === "farmacia" && estaActivo(item));
+const phones = configuration.filter(item => item.tipo === "telefono" && estaActivo(item));
+
+      document.getElementById("advertising").innerHTML =
+        
+ads.map(item => {
+  const image = safeUrl(item.imagen);
+  const video = safeUrl(item["video youtube"]);
+  
+const videoId = video.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
+const videoEmbed = videoId ? "https://www.youtube-nocookie.com/embed/" + videoId[1] + "?autoplay=1&mute=1&playsinline=1" : "";
+  
+  const link = safeUrl(item.enlace);
+  const phone = String(item.telefono || "").replace(/\D/g, "");
+  const whatsapp = phone
+    ? "https://wa.me/" + phone
+    : "";
+
+  return `
+    <section class="section-card">
+      <div class="section-label">📢 PUBLICIDAD DESTACADA</div>
+
+      
+${videoEmbed ? `
+  <div style="position:relative;width:100%;max-width:360px;aspect-ratio:9/16;margin:0 auto 10px;border-radius:11px;overflow:hidden;background:#000;">
+    <iframe
+      src="${videoEmbed}"
+      title="${escapeHtml(item.titulo || "Video publicitario")}"
+      style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+` : image ? `
+  ${link
+    ? `<a href="${link}" target="_blank" rel="noopener">
+         <img class="ad-image"
+           src="${image}"
+           alt="${escapeHtml(item.titulo)}"
+           loading="lazy">
+       </a>`
+    : `<img class="ad-image"
+         src="${image}"
+         alt="${escapeHtml(item.titulo)}"
+         loading="lazy">`
+  }
+` : ""}
+
+
+      ${item.titulo
+        ? `<h3>${escapeHtml(item.titulo)}</h3>`
+        : ""}
+
+      ${item.descripcion
+        ? `<p>${escapeHtml(item.descripcion)}</p>`
+        : ""}
+
+      ${whatsapp ? `
+        <a class="section-link"
+          href="${whatsapp}"
+          target="_blank" rel="noopener">
+          💬 Consultar por WhatsApp
+        </a>
+      ` : ""}
+
+      ${link && !image ? `
+        <a class="section-link"
+          href="${link}"
+          target="_blank" rel="noopener">
+          Ver promoción
+        </a>
+      ` : ""}
+    </section>
+  `;
+}).join("");
+
+
+      document.getElementById("pharmacy").innerHTML =
+        pharmacies.map(item => {
+          const phone = String(item.telefono || "").replace(/\D/g, "");
+
+          return `
+            <section class="section-card">
+              <div class="section-label">💊 Farmacia de turno</div>
+              <h3>${escapeHtml(item.titulo || "Farmacia de turno")}</h3>
+              ${item.descripcion ? `<p>${escapeHtml(item.descripcion)}</p>` : ""}
+              ${item.telefono ? `<p>📞 ${escapeHtml(item.telefono)}</p>` : ""}
+              ${item.direccion ? `<p>📍 ${escapeHtml(item.direccion)}</p>` : ""}
+              ${phone ? `<a class="section-link" href="tel:${phone}">Llamar a la farmacia</a>` : ""}
+            </section>
+          `;
+        }).join("");
+
+      document.getElementById("usefulPhones").innerHTML =
+        phones.map(item => {
+          const phone = String(item.telefono || "").replace(/\D/g, "");
+
+          return `
+            <section class="section-card">
+              <div class="section-label">☎️ Teléfono útil</div>
+              <h3>${escapeHtml(item.titulo || "Teléfono útil")}</h3>
+              ${item.descripcion ? `<p>${escapeHtml(item.descripcion)}</p>` : ""}
+              ${item.telefono ? `<p>📞 ${escapeHtml(item.telefono)}</p>` : ""}
+              ${phone ? `<a class="section-link" href="tel:${phone}">Llamar</a>` : ""}
+            </section>
+          `;
+        }).join("");
+
+  ["informacion1", "informacion2"].forEach((tipo, indice) => {
+    const item = configuration.find(x => x.tipo === tipo && estaActivo(x));
+    const contenedor = document.getElementById(
+      indice === 0 ? "info1" : "info2"
+    );
+
+    if (!contenedor) return;
+
+    if (!item) {
+      contenedor.innerHTML = "";
+      return;
+    }
+
+    const imagen = safeUrl(item.imagen);
+    const enlace = safeUrl(item.enlace);
+
+    contenedor.innerHTML = `
+      <section class="section-card">
+        <div class="section-label">
+          ${indice === 0 ? "ℹ️ INFORMACIÓN IMPORTANTE" : "📣 AVISOS A LA COMUNIDAD"}
+        </div>
+
+        ${item.titulo ? `<h3>${escapeHtml(item.titulo)}</h3>` : ""}
+
+        ${item.descripcion ? `<p>${escapeHtml(item.descripcion)}</p>` : ""}
+
+        ${imagen ? `
+          <img class="ad-image"
+               src="${imagen}"
+               alt="${escapeHtml(item.titulo)}"
+               loading="lazy">
+        ` : ""}
+
+        ${enlace ? `
+          <a class="section-link"
+             href="${enlace}"
+             target="_blank"
+             rel="noopener">
+            Ver más información
+          </a>
+        ` : ""}
+      </section>
+    `;
+  });
+
+    }
+
+    function render() {
+      const q = document.getElementById("search").value.toLowerCase().trim();
+
+      const filtered = businesses.filter(b => {
+        const text = [
+          b.nombre, b.categoria, b.descripcion, b.direccion
+        ].join(" ").toLowerCase();
+
+        return selected === "Principal"
+          ? false
+            : (selected === "Todos" || b.categoria === selected)
+                && text.includes(q);
+      });
+
+      document.getElementById("count").textContent =
+        filtered.length + (filtered.length === 1 ? " comercio" : " comercios");
+
+      
+      
+      if (!filtered.length) {
+        const results = document.getElementById("results");
+
+          if ((selected === "Principal" || selected === "Todos") && !q) {
+              results.innerHTML = "";
+                } else {
+                    results.innerHTML =
+                          '<div class="empty">🔎<br><strong>No encontramos comercios</strong><br>Probá con otra búsqueda o categoría.</div>';
+                            }
+
+                              document.getElementById("count").textContent = "";
+                                return;
+                                }
+                                
+
+
+      const ordenados = [...filtered].sort((a, b) =>
+  Number(Boolean(b.destacado)) - Number(Boolean(a.destacado))
+);
+        
+        document.getElementById("results").innerHTML =
+          '<div class="cards">' + ordenados.map(b => `
+          <article class="card">
+            ${safeUrl(b.foto) ? `
+              <img
+                src="${safeUrl(b.foto)}"
+                alt="${escapeHtml(b.nombre)}"
+                loading="lazy"
+                style="display:block;width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:12px;"
+              >
+            ` : ""}
+
+            ${Boolean(b.destacado) ? `
+              <div style="background:#fff3cd;color:#805b00;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:bold;margin-bottom:10px;">
+                ⭐ COMERCIO DESTACADO
+              </div>
+            ` : ""}
+
+            <span class="tag">${escapeHtml(b.categoria)}</span>
+            <h3>${escapeHtml(b.nombre)}</h3>
+            ${b.descripcion ? `<p class="description">${escapeHtml(b.descripcion)}</p>` : ""}
+            ${b.direccion ? `<p class="detail">📍 ${escapeHtml(b.direccion)}</p>` : ""}
+            ${b.telefono ? `
+              <a class="contact"
+                href="https://wa.me/${String(b.telefono).replace(/\D/g, "")}"
+                target="_blank" rel="noopener">
+                ☎ Consultar por WhatsApp
+              </a>
+            ` : ""}
+          </article>
+        `).join("") + '</div>';
+    }
+
+    init();
+  </script>
+  
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .catch(error => console.error("Error al registrar la aplicación:", error));
+    });
+  }
+</script>
+  
+</body>
+</html>
