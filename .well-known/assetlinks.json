@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.ebillordo_sketch.twa",
+      "sha256_cert_fingerprints": [
+        "9E:3F:D8:39:F6:9F:57:4E:B9:46:85:68:00:E4:A6:0D:3B:B4:F8:70:7E:00:14:60:6C:5D:FB:7C:55:93:7F:55"
+      ]
+    }
+  }
+]
